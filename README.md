@@ -6,7 +6,6 @@ Verify ILogger calls more easily.
 [![CodeFactor](https://www.codefactor.io/repository/github/thomhurst/ilogger.unittest.verifier/badge)](https://www.codefactor.io/repository/github/thomhurst/ilogger.unittest.verifier)
 
 ## Installation
-.NET 6 Required
 
 Install via Nuget
 `Install-Package TomLonghurst.ILogger.UnitTest.Verifier.Moq`
