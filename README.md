@@ -20,6 +20,56 @@ Because verifying calls to `ILogger` is a pain in the ****!
 
 ### Log Level Extensions
 
+#### App Code
+```csharp
+private readonly field ILogger _logger;
+
+public SomeClass(ILogger logger)
+{
+    _logger = logger;
+}
+
+// ...
+
+public void SomeMethod(SomeInput someInput)
+{
+    // ...
+    // Use ILogger as normal - Any way you like.
+    _logger.LogInformation("Something happened");
+    // ...
+}
+```
+
+#### Test Code
+
+```csharp
+private Mock<ILogger> _loggerMock;
+private SomeClass _someClass;
+
+public void Setup()
+{
+    _loggerMock = new Mock<ILogger>();
+    _someClass = new SomeClass(_loggerMock.Object);
+}
+
+[Test]
+public void VerifyLoggerCalled()
+{
+    _someClass.SomeMethod(input);
+    
+    // Use the Verify/Verify[LogLevel] extension methods on Mock<ILogger> or Mock<ILogger<T>>
+    _loggerMock.VerifyInformation("Something happened");
+    // or
+    _loggerMock.Verify(new LoggerVerifyOptions
+    {
+        Message = "Something happened",
+        MessageMatchMethod = MessageMatchMethod.Equals,
+        LogLevel = LogLevel.Information,
+    });
+}
+```
+
+
 ```csharp
     [Test]
     public void Info_Message()
