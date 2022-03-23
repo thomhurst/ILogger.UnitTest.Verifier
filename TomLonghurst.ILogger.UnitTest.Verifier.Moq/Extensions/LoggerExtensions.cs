@@ -105,7 +105,7 @@ public static partial class LoggerExtensions
 
     private static bool MatchEventId(EventId? eventId, LoggerVerifyOptions loggerVerifyOptions)
     {
-        if (eventId == null)
+        if (loggerVerifyOptions.EventId == null)
         {
             return true;
         }
