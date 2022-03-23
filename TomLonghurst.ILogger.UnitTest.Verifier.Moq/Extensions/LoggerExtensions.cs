@@ -29,12 +29,7 @@ public static class LoggerExtensions
     
     public static void Verify(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, LoggerVerifyOptions loggerVerifyOptions)
     {
-        loggerMock.Verify(logger => logger.Log(
-                It.Is<LogLevel>(l => MatchHelper.MatchLogLevel(l, loggerVerifyOptions)),
-                It.Is<EventId>(e => MatchHelper.MatchEventId(e, loggerVerifyOptions)),
-                It.Is<It.IsAnyType>((@object, @type) => MatchHelper.MatchText(@object.ToString(), loggerVerifyOptions)),
-                It.Is<Exception>(e => MatchHelper.MatchException(e, loggerVerifyOptions)),
-                It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
+        loggerMock.Verify(Verifier.GetVerifierExpression(loggerVerifyOptions),
             loggerVerifyOptions.Times ?? Times.Once()
         );
     }
