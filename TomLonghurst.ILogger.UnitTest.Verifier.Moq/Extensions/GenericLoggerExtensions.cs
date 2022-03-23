@@ -5,19 +5,19 @@ using TomLonghurst.ILogger.UnitTest.Verifier.Moq.Models;
 
 namespace TomLonghurst.ILogger.UnitTest.Verifier.Moq.Extensions;
 
-public static class LoggerExtensions
+public static class GenericLoggerExtensions
 {
-    public static void Verify(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, string message)
+    public static void Verify<T>(this Mock<ILogger<T>> loggerMock, string message)
     {
         Verify(loggerMock, message, null);
     }
 
-    public static void Verify(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, string message, LogLevel? logLevel)
+    public static void Verify<T>(this Mock<ILogger<T>> loggerMock, string message, LogLevel? logLevel)
     {
         Verify(loggerMock, message, logLevel, null);
     }
     
-    public static void Verify(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, string message, LogLevel? logLevel, Func<Times>? times)
+    public static void Verify<T>(this Mock<ILogger<T>> loggerMock, string message, LogLevel? logLevel, Func<Times>? times)
     {
         Verify(loggerMock, new LoggerVerifyOptions
         {
@@ -27,7 +27,7 @@ public static class LoggerExtensions
         });
     }
     
-    public static void Verify(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, LoggerVerifyOptions loggerVerifyOptions)
+    public static void Verify<T>(this Mock<ILogger<T>> loggerMock, LoggerVerifyOptions loggerVerifyOptions)
     {
         loggerMock.Verify(logger => logger.Log(
                 It.Is<LogLevel>(l => MatchHelper.MatchLogLevel(l, loggerVerifyOptions)),
@@ -39,32 +39,32 @@ public static class LoggerExtensions
         );
     }
 
-    public static void VerifyTrace(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, string message, Func<Times>? times = null)
+    public static void VerifyTrace<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times = null)
     {
         Verify(loggerMock, message, LogLevel.Trace, times);
     }
 
-    public static void VerifyError(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, string message, Func<Times>? times = null)
+    public static void VerifyError<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times = null)
     {
         Verify(loggerMock, message, LogLevel.Error, times);
     }
 
-    public static void VerifyInformation(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, string message, Func<Times>? times = null)
+    public static void VerifyInformation<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times = null)
     {
         Verify(loggerMock, message, LogLevel.Information, times);
     }
 
-    public static void VerifyWarning(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, string message, Func<Times>? times = null)
+    public static void VerifyWarning<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times = null)
     {
         Verify(loggerMock, message, LogLevel.Warning, times);
     }
 
-    public static void VerifyCritical(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, string message, Func<Times>? times = null)
+    public static void VerifyCritical<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times = null)
     {
         Verify(loggerMock, message, LogLevel.Critical, times);
     }
 
-    public static void VerifyDebug(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, string message, Func<Times>? times = null)
+    public static void VerifyDebug<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times = null)
     {
         Verify(loggerMock, message, LogLevel.Debug, times);
     }
