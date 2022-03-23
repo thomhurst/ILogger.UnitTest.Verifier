@@ -4,7 +4,7 @@ using TomLonghurst.ILogger.UnitTest.Verifier.Moq.Models;
 
 namespace TomLonghurst.ILogger.UnitTest.Verifier.Moq.Helpers;
 
-internal class MatchHelper
+internal static class MatchHelper
 {
     public static bool MatchLogLevel(LogLevel? logLevel, LoggerVerifyOptions loggerVerifyOptions)
     {
