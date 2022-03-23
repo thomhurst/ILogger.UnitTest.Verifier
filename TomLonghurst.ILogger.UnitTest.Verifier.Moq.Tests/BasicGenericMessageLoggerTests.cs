@@ -17,6 +17,13 @@ public class BasicGenericMessageLoggerTests
         _logger = new TestLogger(_loggerMock.Object);
     }
 
+    [Test]
+    public void Basic_Message_Only()
+    {
+        _logger.LogInformation("Some message");
+        _loggerMock.Verify("Some message");
+        _loggerMock.VerifyInformation("Some message");
+    }
 
     [Test]
     public void Info_Message()
