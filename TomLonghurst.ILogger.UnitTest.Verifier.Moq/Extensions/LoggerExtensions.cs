@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using TomLonghurst.ILogger.UnitTest.Verifier.Moq.Helpers;
 using TomLonghurst.ILogger.UnitTest.Verifier.Moq.Models;
 
 namespace TomLonghurst.ILogger.UnitTest.Verifier.Moq.Extensions;

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using TomLonghurst.ILogger.UnitTest.Verifier.Moq.Helpers;
 using TomLonghurst.ILogger.UnitTest.Verifier.Moq.Models;
 
 namespace TomLonghurst.ILogger.UnitTest.Verifier.Moq.Extensions;
@@ -36,7 +35,7 @@ public static class GenericLoggerExtensions
 
     public static void VerifyTrace<T>(this Mock<ILogger<T>> loggerMock, string message)
     {
-        VerifyTrace<T>(loggerMock, message, null);
+        VerifyTrace(loggerMock, message, null);
     }
 
     public static void VerifyTrace<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times)
@@ -46,7 +45,7 @@ public static class GenericLoggerExtensions
 
     public static void VerifyError<T>(this Mock<ILogger<T>> loggerMock, string message)
     {
-        VerifyError<T>(loggerMock, message, null);
+        VerifyError(loggerMock, message, null);
     }
 
     public static void VerifyError<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times)
@@ -56,7 +55,7 @@ public static class GenericLoggerExtensions
 
     public static void VerifyInformation<T>(this Mock<ILogger<T>> loggerMock, string message)
     {
-        VerifyInformation<T>(loggerMock, message, null);
+        VerifyInformation(loggerMock, message, null);
     }
 
     public static void VerifyInformation<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times)
@@ -66,7 +65,7 @@ public static class GenericLoggerExtensions
 
     public static void VerifyWarning<T>(this Mock<ILogger<T>> loggerMock, string message)
     {
-        VerifyWarning<T>(loggerMock, message, null);
+        VerifyWarning(loggerMock, message, null);
     }
 
     public static void VerifyWarning<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times)
@@ -76,7 +75,7 @@ public static class GenericLoggerExtensions
 
     public static void VerifyCritical<T>(this Mock<ILogger<T>> loggerMock, string message)
     {
-        VerifyCritical<T>(loggerMock, message, null);
+        VerifyCritical(loggerMock, message, null);
     }
 
     public static void VerifyCritical<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times)
@@ -86,7 +85,7 @@ public static class GenericLoggerExtensions
 
     public static void VerifyDebug<T>(this Mock<ILogger<T>> loggerMock, string message)
     {
-        VerifyDebug<T>(loggerMock, message, null);
+        VerifyDebug(loggerMock, message, null);
     }
 
     public static void VerifyDebug<T>(this Mock<ILogger<T>> loggerMock, string message, Func<Times>? times)
