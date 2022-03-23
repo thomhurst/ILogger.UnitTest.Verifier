@@ -7,8 +7,8 @@ namespace TomLonghurst.ILogger.UnitTest.Verifier.Moq.Tests;
 
 public class BasicGenericMessageLoggerTests
 {
-    private TestLogger _logger;
-    private Mock<ILogger<BasicGenericMessageLoggerTests>> _loggerMock;
+    private TestLogger _logger = null!;
+    private Mock<ILogger<BasicGenericMessageLoggerTests>> _loggerMock = null!;
 
     [SetUp]
     public void Setup()

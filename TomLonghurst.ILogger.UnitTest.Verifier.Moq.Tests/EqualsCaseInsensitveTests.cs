@@ -9,8 +9,8 @@ namespace TomLonghurst.ILogger.UnitTest.Verifier.Moq.Tests;
 
 public class EqualsCaseInsensitveTests
 {
-    private TestLogger _logger;
-    private Mock<Microsoft.Extensions.Logging.ILogger> _loggerMock;
+    private TestLogger _logger = null!;
+    private Mock<Microsoft.Extensions.Logging.ILogger> _loggerMock = null!;
 
     [SetUp]
     public void Setup()
