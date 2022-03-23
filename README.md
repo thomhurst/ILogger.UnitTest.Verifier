@@ -84,7 +84,8 @@ Because verifying calls to `ILogger` is a pain in the ****!
             Message = "SOME MESSAGE",
             MessageMatchMethod = MessageMatchMethod.Equals,
             StringComparison = StringComparison.OrdinalIgnoreCase,
-            LogLevel = LogLevel.Information
+            LogLevel = LogLevel.Information,
+            Times = Times.Once()
         });
     }
 ```
