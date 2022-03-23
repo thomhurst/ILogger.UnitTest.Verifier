@@ -16,9 +16,9 @@ Install via Nuget
 ## Why?
 Because verifying calls to `ILogger` is a pain in the ****!
 
-### Examples
+## Examples
 
-#### Log Level Extensions
+### Log Level Extensions
 
 ```csharp
     [Test]
