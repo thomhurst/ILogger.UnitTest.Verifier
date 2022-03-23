@@ -16,6 +16,10 @@ Install via Nuget
 ## Why?
 Because verifying calls to `ILogger` is a pain in the ****!
 
+### Usage
+In your tests, create a Mock<ILogger> or Mock<ILogger<T>> and inject this into your classes under test.
+Then you can call `.Verify(LoggerVerifyOptions)` or `.Verify[Information/Warning/Debug/Critical/Trace/Error](String)`
+
 ## Examples
 
 ### Log Level Extensions
@@ -69,7 +73,8 @@ public void VerifyLoggerCalled()
 }
 ```
 
-
+#### Other Examples
+    
 ```csharp
     [Test]
     public void Info_Message()
