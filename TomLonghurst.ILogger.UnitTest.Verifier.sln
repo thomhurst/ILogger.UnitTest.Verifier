@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomLonghurst.ILogger.UnitTest.Verifier.Moq", "TomLonghurst.ILogger.UnitTest.Verifier.Moq\TomLonghurst.ILogger.UnitTest.Verifier.Moq.csproj", "{C6C10D5A-B11F-40A5-92C5-80D5F1A9E04D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomLonghurst.ILogger.UnitTest.Verifier.Moq.Tests", "TomLonghurst.ILogger.UnitTest.Verifier.Moq.Tests\TomLonghurst.ILogger.UnitTest.Verifier.Moq.Tests.csproj", "{060EF961-47CE-4676-A4EB-0623283B392B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6C10D5A-B11F-40A5-92C5-80D5F1A9E04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C10D5A-B11F-40A5-92C5-80D5F1A9E04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C10D5A-B11F-40A5-92C5-80D5F1A9E04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C10D5A-B11F-40A5-92C5-80D5F1A9E04D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{060EF961-47CE-4676-A4EB-0623283B392B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{060EF961-47CE-4676-A4EB-0623283B392B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{060EF961-47CE-4676-A4EB-0623283B392B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{060EF961-47CE-4676-A4EB-0623283B392B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
