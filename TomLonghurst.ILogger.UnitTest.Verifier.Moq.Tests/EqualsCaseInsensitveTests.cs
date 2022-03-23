@@ -26,7 +26,7 @@ public class EqualsCaseInsensitveTests
         _loggerMock.Verify(new LoggerVerifyOptions
         {
             Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageMatchMethod = MessageMatchMethod.Equals,
             StringComparison = StringComparison.OrdinalIgnoreCase,
             LogLevel = LogLevel.Information
         });
@@ -39,7 +39,7 @@ public class EqualsCaseInsensitveTests
         _loggerMock.Verify(new LoggerVerifyOptions
         {
             Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageMatchMethod = MessageMatchMethod.Equals,
             StringComparison = StringComparison.OrdinalIgnoreCase,
             LogLevel = LogLevel.Error
         });       
@@ -52,7 +52,7 @@ public class EqualsCaseInsensitveTests
         _loggerMock.Verify(new LoggerVerifyOptions
         {
             Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageMatchMethod = MessageMatchMethod.Equals,
             StringComparison = StringComparison.OrdinalIgnoreCase,
             LogLevel = LogLevel.Warning
         });
@@ -65,7 +65,7 @@ public class EqualsCaseInsensitveTests
         _loggerMock.Verify(new LoggerVerifyOptions
         {
             Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageMatchMethod = MessageMatchMethod.Equals,
             StringComparison = StringComparison.OrdinalIgnoreCase,
             LogLevel = LogLevel.Debug
         });
@@ -78,7 +78,7 @@ public class EqualsCaseInsensitveTests
         _loggerMock.Verify(new LoggerVerifyOptions
         {
             Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageMatchMethod = MessageMatchMethod.Equals,
             StringComparison = StringComparison.OrdinalIgnoreCase,
             LogLevel = LogLevel.Trace
         });
@@ -91,7 +91,7 @@ public class EqualsCaseInsensitveTests
         _loggerMock.Verify(new LoggerVerifyOptions
         {
             Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageMatchMethod = MessageMatchMethod.Equals,
             StringComparison = StringComparison.OrdinalIgnoreCase,
             LogLevel = LogLevel.Critical
         });

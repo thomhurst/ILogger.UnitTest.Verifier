@@ -6,6 +6,12 @@ namespace TomLonghurst.ILogger.UnitTest.Verifier.Moq.Tests;
 public class TestLogger : Microsoft.Extensions.Logging.ILogger
 {
     private readonly Microsoft.Extensions.Logging.ILogger _logger;
+
+    public TestLogger(Microsoft.Extensions.Logging.ILogger logger)
+    {
+        _logger = logger;
+    }
+
     public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
     {
         _logger.Log(logLevel, eventId, state, exception, formatter);
@@ -19,10 +25,5 @@ public class TestLogger : Microsoft.Extensions.Logging.ILogger
     public IDisposable BeginScope<TState>(TState state)
     {
         return _logger.BeginScope(state);
-    }
-
-    public TestLogger(Microsoft.Extensions.Logging.ILogger logger)
-    {
-        _logger = logger;
     }
 }
