@@ -26,7 +26,7 @@ Then you can call `.Verify(LoggerVerifyOptions)` or `.Verify[Information/Warning
 
 #### App Code
 ```csharp
-private readonly field ILogger _logger;
+private readonly ILogger _logger;
 
 public SomeClass(ILogger logger)
 {
