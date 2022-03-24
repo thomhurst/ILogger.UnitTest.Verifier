@@ -24,8 +24,14 @@ public class ContainsTests
         _logger.LogInformation("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "message",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "message",
+                    MessageMatchMethod = MessageMatchMethod.Contains,
+                }
+            },
             LogLevel = LogLevel.Information
         });
         _loggerMock.VerifyInformation("Some message");
@@ -37,8 +43,14 @@ public class ContainsTests
         _logger.LogError("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "message",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "message",
+                    MessageMatchMethod = MessageMatchMethod.Contains,
+                }
+            },
             LogLevel = LogLevel.Error
         });       
         _loggerMock.VerifyError("Some message");
@@ -50,8 +62,14 @@ public class ContainsTests
         _logger.LogWarning("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "message",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "message",
+                    MessageMatchMethod = MessageMatchMethod.Contains,
+                }
+            },
             LogLevel = LogLevel.Warning
         });
         _loggerMock.VerifyWarning("Some message");
@@ -63,8 +81,14 @@ public class ContainsTests
         _logger.LogDebug("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "message",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "message",
+                    MessageMatchMethod = MessageMatchMethod.Contains,
+                }
+            },
             LogLevel = LogLevel.Debug
         });
         _loggerMock.VerifyDebug("Some message");
@@ -76,8 +100,14 @@ public class ContainsTests
         _logger.LogTrace("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "message",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "message",
+                    MessageMatchMethod = MessageMatchMethod.Contains,
+                }
+            },
             LogLevel = LogLevel.Trace
         });
         _loggerMock.VerifyTrace("Some message");
@@ -89,8 +119,14 @@ public class ContainsTests
         _logger.LogCritical("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "message",
-            MessageMatchMethod = MessageMatchMethod.Contains,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "message",
+                    MessageMatchMethod = MessageMatchMethod.Contains,
+                }
+            },
             LogLevel = LogLevel.Critical
         });
         _loggerMock.VerifyCritical("Some message");

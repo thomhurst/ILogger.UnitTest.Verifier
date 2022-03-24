@@ -25,9 +25,15 @@ public class EqualsCaseInsensitveTests
         _logger.LogInformation("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Equals,
-            StringComparison = StringComparison.OrdinalIgnoreCase,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "SOME MESSAGE",
+                    MessageMatchMethod = MessageMatchMethod.Equals,
+                    StringComparison = StringComparison.OrdinalIgnoreCase,
+                }
+            },
             LogLevel = LogLevel.Information
         });
     }
@@ -38,9 +44,15 @@ public class EqualsCaseInsensitveTests
         _logger.LogError("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Equals,
-            StringComparison = StringComparison.OrdinalIgnoreCase,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "SOME MESSAGE",
+                    MessageMatchMethod = MessageMatchMethod.Equals,
+                    StringComparison = StringComparison.OrdinalIgnoreCase,
+                }
+            },
             LogLevel = LogLevel.Error
         });       
     }
@@ -51,9 +63,15 @@ public class EqualsCaseInsensitveTests
         _logger.LogWarning("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Equals,
-            StringComparison = StringComparison.OrdinalIgnoreCase,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "SOME MESSAGE",
+                    MessageMatchMethod = MessageMatchMethod.Equals,
+                    StringComparison = StringComparison.OrdinalIgnoreCase,
+                }
+            },
             LogLevel = LogLevel.Warning
         });
     }
@@ -64,9 +82,15 @@ public class EqualsCaseInsensitveTests
         _logger.LogDebug("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Equals,
-            StringComparison = StringComparison.OrdinalIgnoreCase,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "SOME MESSAGE",
+                    MessageMatchMethod = MessageMatchMethod.Equals,
+                    StringComparison = StringComparison.OrdinalIgnoreCase,
+                }
+            },
             LogLevel = LogLevel.Debug
         });
     }
@@ -77,9 +101,15 @@ public class EqualsCaseInsensitveTests
         _logger.LogTrace("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Equals,
-            StringComparison = StringComparison.OrdinalIgnoreCase,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "SOME MESSAGE",
+                    MessageMatchMethod = MessageMatchMethod.Equals,
+                    StringComparison = StringComparison.OrdinalIgnoreCase,
+                }
+            },
             LogLevel = LogLevel.Trace
         });
     }
@@ -90,9 +120,15 @@ public class EqualsCaseInsensitveTests
         _logger.LogCritical("Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Equals,
-            StringComparison = StringComparison.OrdinalIgnoreCase,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "SOME MESSAGE",
+                    MessageMatchMethod = MessageMatchMethod.Equals,
+                    StringComparison = StringComparison.OrdinalIgnoreCase,
+                }
+            },
             LogLevel = LogLevel.Critical
         });
     }

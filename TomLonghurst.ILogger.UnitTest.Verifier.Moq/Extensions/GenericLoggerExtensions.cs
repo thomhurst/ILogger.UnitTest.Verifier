@@ -20,7 +20,13 @@ public static class GenericLoggerExtensions
     {
         Verify(loggerMock, new LoggerVerifyOptions
         {
-            Message = message,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = message
+                }
+            },
             LogLevel = logLevel,
             Times = times?.Invoke()
         });

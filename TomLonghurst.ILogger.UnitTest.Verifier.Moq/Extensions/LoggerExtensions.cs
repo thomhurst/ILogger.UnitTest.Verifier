@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using TomLonghurst.ILogger.UnitTest.Verifier.Moq.Models;
 
@@ -20,7 +21,13 @@ public static class LoggerExtensions
     {
         Verify(loggerMock, new LoggerVerifyOptions
         {
-            Message = message,
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = message
+                }
+            },
             LogLevel = logLevel,
             Times = times?.Invoke()
         });
@@ -28,7 +35,7 @@ public static class LoggerExtensions
     
     public static void Verify(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, LoggerVerifyOptions loggerVerifyOptions)
     {
-        loggerMock.Verify(Verifier.GetVerifierExpression(loggerVerifyOptions),
+        loggerMock.Verify(Verifier.GetVerifierExpression(loggerVerifyOptions, new NullLogger<string>()),
             loggerVerifyOptions.Times ?? Times.Once()
         );
     }

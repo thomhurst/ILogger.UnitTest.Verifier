@@ -24,7 +24,7 @@ public class ExceptionTests
         _logger.LogInformation(123, new TestException(), "Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            ExceptionType = typeof(TestException),
+            ExceptionOptions = { ExceptionType = typeof(TestException) },
             LogLevel = LogLevel.Information
         });
     }
@@ -35,7 +35,7 @@ public class ExceptionTests
         _logger.LogError(123, new TestException(), "Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            ExceptionType = typeof(TestException),
+            ExceptionOptions = { ExceptionType = typeof(TestException) },
             LogLevel = LogLevel.Error
         });       
     }
@@ -46,7 +46,7 @@ public class ExceptionTests
         _logger.LogWarning(123, new TestException(), "Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            ExceptionType = typeof(TestException),
+            ExceptionOptions = { ExceptionType = typeof(TestException) },
             LogLevel = LogLevel.Warning
         });
     }
@@ -57,7 +57,7 @@ public class ExceptionTests
         _logger.LogDebug(123, new TestException(), "Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            ExceptionType = typeof(TestException),
+            ExceptionOptions = { ExceptionType = typeof(TestException) },
             LogLevel = LogLevel.Debug
         });
     }
@@ -68,7 +68,7 @@ public class ExceptionTests
         _logger.LogTrace(123, new TestException(), "Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            ExceptionType = typeof(TestException),
+            ExceptionOptions = { ExceptionType = typeof(TestException) },
             LogLevel = LogLevel.Trace
         });
     }
@@ -79,7 +79,7 @@ public class ExceptionTests
         _logger.LogCritical(123, new TestException(), "Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            ExceptionType = typeof(TestException),
+            ExceptionOptions = { ExceptionType = typeof(TestException) },
             LogLevel = LogLevel.Critical
         });
     }

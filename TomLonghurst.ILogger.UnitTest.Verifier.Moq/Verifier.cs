@@ -8,12 +8,13 @@ namespace TomLonghurst.ILogger.UnitTest.Verifier.Moq;
 
 internal static class Verifier
 {
-    public static Expression<Action<Microsoft.Extensions.Logging.ILogger>> GetVerifierExpression(LoggerVerifyOptions loggerVerifyOptions)
+    public static Expression<Action<Microsoft.Extensions.Logging.ILogger>> GetVerifierExpression(
+        LoggerVerifyOptions loggerVerifyOptions, Microsoft.Extensions.Logging.ILogger loggerMockObject)
     {
         return logger => logger.Log(
             It.Is<LogLevel>(l => MatchHelper.MatchLogLevel(l, loggerVerifyOptions)),
             It.Is<EventId>(e => MatchHelper.MatchEventId(e, loggerVerifyOptions)),
-            It.Is<It.IsAnyType>((@object, @type) => MatchHelper.MatchText(@object.ToString(), loggerVerifyOptions)),
+            It.Is<It.IsAnyType>((@object, @type) => MatchHelper.MatchText(@object, loggerVerifyOptions)),
             It.Is<Exception>(e => MatchHelper.MatchException(e, loggerVerifyOptions)),
             It.IsAny<Func<It.IsAnyType, Exception?, string>>());
     }
@@ -23,7 +24,7 @@ internal static class Verifier
         return logger => logger.Log(
             It.Is<LogLevel>(l => MatchHelper.MatchLogLevel(l, loggerVerifyOptions)),
             It.Is<EventId>(e => MatchHelper.MatchEventId(e, loggerVerifyOptions)),
-            It.Is<It.IsAnyType>((@object, @type) => MatchHelper.MatchText(@object.ToString(), loggerVerifyOptions)),
+            It.Is<It.IsAnyType>((@object, @type) => MatchHelper.MatchText(@object, loggerVerifyOptions)),
             It.Is<Exception>(e => MatchHelper.MatchException(e, loggerVerifyOptions)),
             It.IsAny<Func<It.IsAnyType, Exception?, string>>());
     }
