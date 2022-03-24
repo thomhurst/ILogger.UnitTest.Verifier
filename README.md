@@ -66,8 +66,14 @@ public void VerifyLoggerCalled()
     // or
     _loggerMock.Verify(new LoggerVerifyOptions
     {
-        Message = "Something happened",
-        MessageMatchMethod = MessageMatchMethod.Equals,
+        MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "Something happened",
+                    MessageMatchMethod = MessageMatchMethod.Equals
+                }
+            },
         LogLevel = LogLevel.Information,
     });
 }
@@ -131,14 +137,38 @@ public void VerifyLoggerCalled()
     [Test]
     public void Info_Message()
     {
-        _logger.LogInformation(123, new TestException(), "Some message");
+        _logger.LogInformation(123, new TestException("My exception message"), "Value was: {Value}", "Zero");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
             EventId = 123,
-            ExceptionType = typeof(TestException),
-            Message = "SOME MESSAGE",
-            MessageMatchMethod = MessageMatchMethod.Equals,
-            StringComparison = StringComparison.OrdinalIgnoreCase,
+            ExceptionOptions =
+            {
+                ExceptionType = typeof(TestException),
+                Message = "My exception message",
+                StringComparison = StringComparison.Ordinal,
+                MessageMatchMethod = MessageMatchMethod.Equals
+            },
+            MessageOptions =
+            {
+                MessageTemplateOptions =
+                {
+                    MessageTemplate = "Value was: {Value}",
+                    StringComparison = StringComparison.Ordinal,
+                    MessageMatchMethod = MessageMatchMethod.Equals
+                },
+                FormattedMessageOptions =
+                {
+                    Message = "Value was: Zero",
+                    StringComparison = StringComparison.Ordinal,
+                    MessageMatchMethod = MessageMatchMethod.Equals
+                },
+                MessageParametersOptions =
+                {
+                    Parameters = new []{ new KeyValuePair<string, object>("Value", "Zero") },
+                    StringComparison = StringComparison.Ordinal,
+                    MessageMatchMethod = MessageMatchMethod.Equals
+                }
+            },
             LogLevel = LogLevel.Information,
             Times = Times.Once()
         });
