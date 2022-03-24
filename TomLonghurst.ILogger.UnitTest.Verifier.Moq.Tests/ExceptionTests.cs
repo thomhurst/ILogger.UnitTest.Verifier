@@ -46,7 +46,18 @@ public class ExceptionTests
         _logger.LogWarning(123, new TestException(), "Some message");
         _loggerMock.Verify(new LoggerVerifyOptions
         {
-            ExceptionOptions = { ExceptionType = typeof(TestException) },
+            ExceptionOptions =
+            {
+                ExceptionType = typeof(TestException),
+                Message = "Something went wrong!"
+            },
+            MessageOptions =
+            {
+                FormattedMessageOptions =
+                {
+                    Message = "Some message"
+                }
+            },
             LogLevel = LogLevel.Warning
         });
     }

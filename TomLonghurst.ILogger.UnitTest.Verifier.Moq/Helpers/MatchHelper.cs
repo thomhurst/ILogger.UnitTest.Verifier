@@ -65,11 +65,31 @@ internal static class MatchHelper
 
     public static bool MatchException(Exception e, LoggerVerifyOptions loggerVerifyOptions)
     {
-        if (loggerVerifyOptions.ExceptionOptions.ExceptionType == null)
+        return MatchExceptionType(e, loggerVerifyOptions) && MatchExceptionMessage(e, loggerVerifyOptions);
+    }
+
+    private static bool MatchExceptionMessage(Exception exception, LoggerVerifyOptions loggerVerifyOptions)
+    {
+        if (loggerVerifyOptions.ExceptionOptions.Message == null)
         {
             return true;
         }
         
+        if (loggerVerifyOptions.ExceptionOptions.MessageMatchMethod == MessageMatchMethod.Equals)
+        {
+            return string.Equals(exception.Message, loggerVerifyOptions.ExceptionOptions.Message, loggerVerifyOptions.ExceptionOptions.StringComparison);
+        }
+
+        return exception.Message.Contains(loggerVerifyOptions.ExceptionOptions.Message, loggerVerifyOptions.ExceptionOptions.StringComparison);
+    }
+
+    private static bool MatchExceptionType(Exception e, LoggerVerifyOptions loggerVerifyOptions)
+    {
+        if (loggerVerifyOptions.ExceptionOptions.ExceptionType == null)
+        {
+            return true;
+        }
+
         return e.GetType() == loggerVerifyOptions.ExceptionOptions.ExceptionType;
     }
 
