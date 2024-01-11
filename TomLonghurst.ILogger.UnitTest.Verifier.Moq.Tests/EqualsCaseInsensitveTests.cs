@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
@@ -130,6 +131,46 @@ public class EqualsCaseInsensitveTests
                 }
             },
             LogLevel = LogLevel.Critical
+        });
+    }
+    
+    [Test]
+    public void Info_Message2()
+    {
+        _logger.LogInformation(123, new TestException("My exception message"), "Value was: {Value}", "Zero");
+        _loggerMock.Verify(new LoggerVerifyOptions
+        {
+            EventId = 123,
+            ExceptionOptions =
+            {
+                ExceptionType = typeof(TestException),
+                Message = "My exception message",
+                StringComparison = StringComparison.Ordinal,
+                MessageMatchMethod = MessageMatchMethod.Equals
+            },
+            MessageOptions =
+            {
+                MessageTemplateOptions =
+                {
+                    MessageTemplate = "Value was: {Value}",
+                    StringComparison = StringComparison.Ordinal,
+                    MessageMatchMethod = MessageMatchMethod.Equals
+                },
+                FormattedMessageOptions =
+                {
+                    Message = "Value was: Zero",
+                    StringComparison = StringComparison.Ordinal,
+                    MessageMatchMethod = MessageMatchMethod.Equals
+                },
+                MessageParametersOptions =
+                {
+                    Parameters = new []{ new KeyValuePair<string, object>("Value", "Zero") },
+                    StringComparison = StringComparison.Ordinal,
+                    MessageMatchMethod = MessageMatchMethod.Equals
+                }
+            },
+            LogLevel = LogLevel.Information,
+            Times = Times.Once()
         });
     }
 }

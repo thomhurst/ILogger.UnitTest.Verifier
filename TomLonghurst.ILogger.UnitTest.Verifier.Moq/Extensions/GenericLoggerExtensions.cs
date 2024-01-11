@@ -34,7 +34,7 @@ public static class GenericLoggerExtensions
     
     public static void Verify<T>(this Mock<ILogger<T>> loggerMock, LoggerVerifyOptions loggerVerifyOptions)
     {
-        loggerMock.Verify(Verifier.GetGenericVerifierExpression<T>(loggerVerifyOptions),
+        loggerMock.Verify(Verifier.GetGenericVerifierExpression(loggerVerifyOptions, loggerMock),
             loggerVerifyOptions.Times ?? Times.Once()
         );
     }
