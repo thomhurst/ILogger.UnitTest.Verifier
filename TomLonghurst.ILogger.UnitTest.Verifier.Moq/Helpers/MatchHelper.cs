@@ -30,7 +30,7 @@ internal static class MatchHelper
         foreach (var parameter in loggerVerifyOptions.MessageOptions.MessageParametersOptions.Parameters ?? Array.Empty<KeyValuePair<string, object>>())
         {
             var loggedValue = (values?.Where(x => x.Key == parameter.Key) ?? Array.Empty<KeyValuePair<string, object>>()).ToList();
-            if (!loggedValue.Any() || loggedValue.First().Value != parameter.Value)
+            if (!loggedValue.Any() || !loggedValue.First().Value.Equals(parameter.Value))
             {
                 return false;
             }

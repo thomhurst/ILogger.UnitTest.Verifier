@@ -22,7 +22,7 @@ public class ParameterTests
     [TestCase(1)]
     [TestCase("val")]
     [TestCase(true)]
-    public void Verify_Logger_Parameter(object value)
+    public void Verify_Logger_Parameter_By_Reference(object value)
     {
         _logger.LogInformation("Some message {Value}", value);
 
@@ -35,6 +35,30 @@ public class ParameterTests
                     Parameters = new []
                     {
                         new KeyValuePair<string, object>("Value", value),
+                    }
+                }
+            }
+        });
+    }
+
+    [TestCase(1, 1)]
+    [TestCase("val", "val")]
+    [TestCase(true, true)]
+    public void Verify_Logger_Parameter_By_Value(object loggedValue, object expectedValue)
+    {
+        _logger.LogInformation("Some message {Value}", loggedValue);
+        
+        Assert.That(loggedValue, Is.Not.SameAs(expectedValue));
+
+        _loggerMock.Verify(new LoggerVerifyOptions
+        {
+            MessageOptions =
+            {
+                MessageParametersOptions =
+                {
+                    Parameters = new []
+                    {
+                        new KeyValuePair<string, object>("Value", expectedValue),
                     }
                 }
             }
