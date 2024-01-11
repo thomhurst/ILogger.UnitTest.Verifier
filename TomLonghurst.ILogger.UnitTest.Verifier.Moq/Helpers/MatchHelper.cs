@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Collections;
+using Microsoft.Extensions.Logging;
+using Moq;
 using TomLonghurst.ILogger.UnitTest.Verifier.Moq.Extensions;
 using TomLonghurst.ILogger.UnitTest.Verifier.Moq.Models;
 
@@ -16,26 +18,47 @@ internal static class MatchHelper
         return logLevel == loggerVerifyOptions.LogLevel;
     }
 
-    public static bool MatchText(object? message, LoggerVerifyOptions loggerVerifyOptions)
+    public static bool MatchText(object? message, LoggerVerifyOptions loggerVerifyOptions, Mock logger)
     {
         var values = message as IReadOnlyList<KeyValuePair<string, object>>;
         return MatchMessage(message.ToString(), loggerVerifyOptions) 
                && MatchMessageTemplate(values.FirstOrDefault(x => x.Key == "{OriginalFormat}").Value?.ToString(), loggerVerifyOptions)
-               && MatchParameters(values, loggerVerifyOptions);
+               && MatchParameters(values, loggerVerifyOptions, logger);
     }
 
     private static bool MatchParameters(IReadOnlyList<KeyValuePair<string, object>> values,
-        LoggerVerifyOptions loggerVerifyOptions)
+        LoggerVerifyOptions loggerVerifyOptions, Mock logger)
     {
         foreach (var parameter in loggerVerifyOptions.MessageOptions.MessageParametersOptions.Parameters ?? Array.Empty<KeyValuePair<string, object>>())
         {
-            var loggedValue = (values?.Where(x => x.Key == parameter.Key) ?? Array.Empty<KeyValuePair<string, object>>()).ToList();
+            var loggedValue = FindParameter(values, parameter, logger);
+            
             if (!loggedValue.Any() || !loggedValue.First().Value.Equals(parameter.Value))
             {
                 return false;
             }
         }
         return true;
+    }
+
+    private static List<KeyValuePair<string, object>> FindParameter(IReadOnlyList<KeyValuePair<string, object>>? values,
+        KeyValuePair<string, object> parameter, Mock logger)
+    {
+        var keyValuePairs = (values?.Where(x => x.Key == parameter.Key) ?? Array.Empty<KeyValuePair<string, object>>()).ToList();
+        
+            if (ScopeLoggerHelper.ConditionalWeakTable.TryGetValue(logger, out var scopedHolder))
+            {
+                var list = scopedHolder.GetStates();
+                foreach (var state in list)
+                {
+                    if (state is IEnumerable<KeyValuePair<string, object>> dict)
+                    {
+                        keyValuePairs.AddRange(dict.Where(x => x.Key == parameter.Key));
+                    }
+                }
+            }
+
+            return keyValuePairs.ToList();
     }
 
     private static bool MatchMessageTemplate(string messageTemplate, LoggerVerifyOptions loggerVerifyOptions)

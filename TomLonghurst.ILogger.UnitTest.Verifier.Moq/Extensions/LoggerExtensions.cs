@@ -35,7 +35,7 @@ public static class LoggerExtensions
     
     public static void Verify(this Mock<Microsoft.Extensions.Logging.ILogger> loggerMock, LoggerVerifyOptions loggerVerifyOptions)
     {
-        loggerMock.Verify(Verifier.GetVerifierExpression(loggerVerifyOptions, new NullLogger<string>()),
+        loggerMock.Verify(Verifier.GetVerifierExpression(loggerVerifyOptions, loggerMock),
             loggerVerifyOptions.Times ?? Times.Once()
         );
     }

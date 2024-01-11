@@ -24,13 +24,6 @@ public class TestLogger : Microsoft.Extensions.Logging.ILogger
 
     public IDisposable BeginScope<TState>(TState state)
     {
-        return new NoopDisposable();
-    }
-    
-    private class NoopDisposable : IDisposable
-    {
-        public void Dispose()
-        {
-        }
+        return _logger.BeginScope(state);
     }
 }
