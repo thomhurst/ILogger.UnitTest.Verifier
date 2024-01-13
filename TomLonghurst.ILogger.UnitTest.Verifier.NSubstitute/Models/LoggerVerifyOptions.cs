@@ -1,0 +1,25 @@
+﻿using Microsoft.Extensions.Logging;
+
+namespace TomLonghurst.ILogger.UnitTest.Verifier.NSubstitute.Models;
+
+public record LoggerVerifyOptions
+{
+    /**
+     * <summary>The log level to verify. By default will match any log level</summary>
+     */
+    public LogLevel? LogLevel { get; set; }
+
+    /**
+     * <summary>The event id to check was logged</summary>
+     */
+    public EventId? EventId { get; set; }
+
+    public ExceptionOptions ExceptionOptions { get; } = new ExceptionOptions();
+    
+    public MessageOptions MessageOptions { get; } = new MessageOptions();
+
+    /**
+     * <summary>The amount of times to verify the logger was called</summary>
+     */
+    public int Times { get; set; } = 1;
+}

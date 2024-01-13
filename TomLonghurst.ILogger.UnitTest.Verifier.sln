@@ -4,6 +4,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomLonghurst.ILogger.UnitTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomLonghurst.ILogger.UnitTest.Verifier.Moq.Tests", "TomLonghurst.ILogger.UnitTest.Verifier.Moq.Tests\TomLonghurst.ILogger.UnitTest.Verifier.Moq.Tests.csproj", "{060EF961-47CE-4676-A4EB-0623283B392B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomLonghurst.ILogger.UnitTest.Verifier.NSubstitute", "TomLonghurst.ILogger.UnitTest.Verifier.NSubstitute\TomLonghurst.ILogger.UnitTest.Verifier.NSubstitute.csproj", "{619EC360-B818-41A8-9BAF-16437C7B4D63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomLonghurst.ILogger.UnitTest.Verifier.NSubstitute.UnitTests", "TomLonghurst.ILogger.UnitTest.Verifier.NSubstitute.UnitTests\TomLonghurst.ILogger.UnitTest.Verifier.NSubstitute.UnitTests.csproj", "{1D4893EE-4CD4-420E-83AA-051450F78D67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomLonghurst.ILogger.UnitTest.Verifier.Pipeline", "TomLonghurst.ILogger.UnitTest.Verifier.Pipeline\TomLonghurst.ILogger.UnitTest.Verifier.Pipeline.csproj", "{F8DD57C5-4891-4221-8310-DC309E210A34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,17 @@ Global
 		{060EF961-47CE-4676-A4EB-0623283B392B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{060EF961-47CE-4676-A4EB-0623283B392B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{060EF961-47CE-4676-A4EB-0623283B392B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{619EC360-B818-41A8-9BAF-16437C7B4D63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{619EC360-B818-41A8-9BAF-16437C7B4D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{619EC360-B818-41A8-9BAF-16437C7B4D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{619EC360-B818-41A8-9BAF-16437C7B4D63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D4893EE-4CD4-420E-83AA-051450F78D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D4893EE-4CD4-420E-83AA-051450F78D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D4893EE-4CD4-420E-83AA-051450F78D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D4893EE-4CD4-420E-83AA-051450F78D67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8DD57C5-4891-4221-8310-DC309E210A34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8DD57C5-4891-4221-8310-DC309E210A34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8DD57C5-4891-4221-8310-DC309E210A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8DD57C5-4891-4221-8310-DC309E210A34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
