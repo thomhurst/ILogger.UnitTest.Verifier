@@ -1,13 +1,13 @@
+using EnumerableAsyncProcessor.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ModularPipelines.Attributes;
 using ModularPipelines.Context;
-using ModularPipelines.Extensions;
+using ModularPipelines.DotNet.Extensions;
+using ModularPipelines.DotNet.Options;
 using ModularPipelines.Git.Extensions;
 using ModularPipelines.Models;
 using ModularPipelines.Modules;
-using ModularPipelines.NuGet.Extensions;
-using ModularPipelines.NuGet.Options;
 using TomLonghurst.ILogger.UnitTest.Verifier.Pipeline.Settings;
 
 namespace TomLonghurst.ILogger.UnitTest.Verifier.Pipeline.Modules;
@@ -68,10 +68,12 @@ public class UploadPackagesToNugetModule : Module<CommandResult[]>
 
         var packagePaths = await GetModule<PackagePathsParserModule>();
 
-        return await context.NuGet()
-            .UploadPackages(new NuGetUploadOptions(packagePaths.Value!.AsPaths(), new Uri("https://api.nuget.org/v3/index.json"))
+        return await packagePaths.Value!.SelectAsync(async file => await context.DotNet()
+            .Nuget
+            .Push(new DotNetNugetPushOptions(file)
             {
+                Source = "https://api.nuget.org/v3/index.json",
                 ApiKey = _options.Value.ApiKey!
-            });
+            }, cancellationToken), cancellationToken: cancellationToken).ProcessOneAtATime();
     }
 }
